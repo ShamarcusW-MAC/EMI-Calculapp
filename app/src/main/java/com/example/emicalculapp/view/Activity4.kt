@@ -101,24 +101,19 @@ class Activity4 : AppCompatActivity() {
 
         })
 
-
-        fun calculate(view : View) {
-
-        }
-
 //        EMI = [P x R x (1+R)^N]/[(1+R)^ (N-1)],
         val cal_button = findViewById<Button>(R.id.calculate_button) as Button
 
         cal_button.setOnClickListener {
-            interest_bar.getProgress() / 100
-            val emi1 = seek_bar.getProgress() * (interest_bar.getProgress()) *
-                    Math.pow((1.0 + (interest_bar.getProgress())), (1.0 * tenure_bar.getProgress()))
+            val interest_bar_value : Double = interest_bar.getProgress() / 100.0
+            val emi1 = seek_bar.getProgress() * interest_bar_value *
+                    Math.pow((1.0 + interest_bar_value), (1.0 * tenure_bar.getProgress()))
 
-            val emi2 = Math.pow((1.0 + interest_bar.getProgress()), tenure_bar.getProgress() - 1.0)
+            val emi2 = Math.pow((1.0 + interest_bar_value), (tenure_bar.getProgress() - 1.0))
 
             val emi = emi1 / emi2
 
-            answer_view.setText("EMI : "+ emi.toInt())
+            answer_view.setText("EMI : "+ emi.toFloat())
 
             Toast.makeText(this, "Yeah baby!", Toast.LENGTH_LONG).show()
         }
