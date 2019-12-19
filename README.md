@@ -1,4 +1,4 @@
-# EMI-Calculapp-Week2-Day2
+# EMI-Calculapp
 An EMI calculator with also a profile including the user's name and a picture.
 This application has the following features
 
